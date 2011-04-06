@@ -11,8 +11,14 @@ console.log( sys.inspect( linux.ps( ) ) );
 console.log( "ps.pid('1') gives: " );
 console.log( sys.inspect( linux.ps.pid( 1 ) ) );
 
-console.log( "acpi.batteries( ) gives: " );
-console.log( sys.inspect( linux.acpi.batteries( ) ) );
+if( !linux.ps.pid( 9999 ) ){
+	console.log( "ps.pid('9999') returned false." );
+}
 
-console.log( "acpi.battery( 'BAT0' ) gives: " );
-console.log( sys.inspect( linux.acpi.battery( "BAT0" ) ) );
+if( linux.acpi.batteries() ){
+	batteryArray	= linux.acpi.batteries();
+	for( var x=0; x<batteryArray.length; x++ ){
+		console.log( "linux.acpi.battery( '" + batteryArray[x]['name'] + "' ) gives: " );
+		console.log( linux.acpi.battery( batteryArray[x]['name'] ) );
+	}
+}
