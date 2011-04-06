@@ -38,6 +38,16 @@ Functionality:
 	linux.acpi.battery( batteryName ) returns a detailed array
 	containing the information above ( without 'name' ).
 
+	linux.sysctl() returns a detailed array just like sysctl -a. This array
+	is indexed. Simply replace the "."'s  ( dots ) in the output of sysctl -a
+	with a new array. An example is below:
+		
+		if( linux.sysctl()['net']['ipv4']['conf']['all']['forwarding'] == 0 ){
+			console.log( "Forwarding is off.." );
+		}else{
+			console.log( "Forwarding is on.." );
+		}
+
 	All functions return false on error. This allows for tests suchs as
 
 		if( linux.acpi.batteries() ){
