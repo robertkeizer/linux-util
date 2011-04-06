@@ -38,5 +38,11 @@ Functionality:
 	linux.acpi.battery( batteryName ) returns a detailed array
 	containing the information above ( without 'name' ).
 
+	All functions return false on error. This allows for tests suchs as
+
+		if( linux.acpi.batteries() ){
+			// Do something.
+		}
+
 Tests:
 	A simple test/example of what linux-util does is in tests/
