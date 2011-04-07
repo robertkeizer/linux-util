@@ -24,6 +24,10 @@ if( linux.acpi.batteries() ){
 }
 */
 
-var sysctl	= linux.sysctl();
+console.log( "sys.inspect of linux.sysctl() is: " );
+console.log( sys.inspect( linux.sysctl() ) );
 
-console.log( sys.inspect( sysctl ) );
+console.log( "linux.sysctl().net.core.somaxconn is: ");
+console.log( linux.sysctl().net.core.somaxconn );
+
+console.log( sys.inspect( linux.sysctl().net.core ) );
