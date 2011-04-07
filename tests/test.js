@@ -23,5 +23,5 @@ if( linux.acpi.batteries() ){
 	}
 }
 */
-console.log( "linux.sysctl() gives:" );
-console.log( sys.inspect( linux.sysctl() ) );
+console.log( "linux.sysctl().net.irda.warn_noreply_time() gives:" );
+console.log( linux.sysctl().net.irda.warn_noreply_time() );
