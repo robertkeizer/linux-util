@@ -24,11 +24,6 @@ if( linux.acpi.batteries() ){
 }
 */
 
-console.log( "sysctl() gives:" );
-console.log( sys.inspect( linux.sysctl() ) );
+var sysctl	= linux.sysctl();
 
-console.log( "sysctl().net.ipv4.conf.all.forwrading gives:" );
-console.log( linux.sysctl().net.ipv4.conf.all.forwarding );
-
-console.log( "sysctl().fs.inode_state gives:" );
-console.log( linux.sysctl().fs.inode_state );
+console.log( sys.inspect( sysctl ) );
