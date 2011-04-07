@@ -1,7 +1,7 @@
 var sys		= require('sys');
 var linux	= require('../');
 console.log( "Starting tests.." );
-
+/*
 console.log( "mounts gives: " );
 console.log( sys.inspect( linux.mounts( ) ) );
 
@@ -22,6 +22,6 @@ if( linux.acpi.batteries() ){
 		console.log( linux.acpi.battery( batteryArray[x]['name'] ) );
 	}
 }
-
+*/
 console.log( "linux.sysctl() gives:" );
 console.log( sys.inspect( linux.sysctl() ) );
