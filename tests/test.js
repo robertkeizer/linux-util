@@ -2,8 +2,14 @@ var	linux	= require( '../' );
 var	sys	= require( 'sys' );
 console.log( "Starting up tests.." );
 
-console.log( "linux.sysctl().net.ipvfour.conf.all.forwarding gives" );
-console.log( linux.sysctl().net.ipvfour.conf.all.forwarding );
+var sysctl	= linux.sysctl();
 
-console.log( "Enabling forwarding.." );
-linux.sysctl().net.ipvfour.conf.all.forwarding = 1;
+console.log( "sysctl is : " + sys.inspect( sysctl ) );
+
+if( sysctl.net.ipvfour.conf.all.forwarding == 0 ){
+	console.log( "Forwarding is disabled.. Trying to enable.." );
+	sysctl.net.ipvfour.conf.all.forwarding = 1;
+}else{
+	console.log( "Forwarding is enabled.. Trying to disable.." );
+	sysctl.net.ipvfour.conf.all.forwarding = 0;
+}
