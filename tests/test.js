@@ -13,3 +13,6 @@ console.log( sys.inspect( linux.ps.pid(1) ) );
 
 console.log( "linux.sysctl() gives: " );
 console.log( sys.inspect( linux.sysctl() ) );
+
+console.log( "linux.acpi.batteries() gives: " );
+console.log( sys.inspect( linux.acpi.batteries() ) );
