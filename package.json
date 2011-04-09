@@ -1,2 +1,11 @@
-{	"name" : "linux-util",
+{	"name"		: "linux-util",
+	"version"	: "0.0.1-rc1",
+	"author"	: "Robert Keizer <robert@keizer.ca>",
+	"licenses"	: [{
+		"type"	: "Public Domain"
+	}],
+	"repository"	: {
+		"type"	: "git",
+		"url"	: "git://github.com/robertkeizer/linux-util.git"
+	},
 	"main" : "./lib/linux.js" }
