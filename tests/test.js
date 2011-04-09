@@ -22,13 +22,11 @@ if( linux.acpi.batteries() ){
 		console.log( linux.acpi.battery( batteryArray[x]['name'] ) );
 	}
 }
-*/
 
 console.log( "sys.inspect of linux.sysctl() is: " );
 console.log( sys.inspect( linux.sysctl() ) );
 
-console.log( "sys.inspect of linux.sysctl().net is: ");
-console.log( sys.inspect( linux.sysctl().net ) );
+*/
 
-console.log( "linux.sysctl().net.ipv4.conf.all.forwarding is: ");
-console.log( linux.sysctl().net.ipv4.conf.all.forwarding );
+console.log( "linux.sysctl().net.ipvfour.conf.all.forwarding is: ");
+console.log( linux.sysctl().net.ipvfour.conf.all.forwarding );
