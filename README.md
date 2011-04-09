@@ -1,5 +1,3 @@
-A library to help with linux specific functionality.
-
 __sysctl()__ - 
 Produces an object that can be used to grab sysctl values. Since numbers and some special
 characters are not allowed in object names, full spelt out numbers are substituted.
