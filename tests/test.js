@@ -6,4 +6,4 @@ console.log( "linux.sysctl() gives" );
 console.log( sys.inspect( linux.sysctl() ) );
 
 console.log( "linux.sysctl().net.ipvfour.conf.all.forwarding gives" );
-console.log( sys.inspect( linux.sysctl().net.ipvfour.conf.all.forwarding )  );
+console.log( linux.sysctl().net.ipvfour.conf.all.forwarding );
