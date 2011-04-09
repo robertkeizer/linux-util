@@ -30,5 +30,5 @@ console.log( sys.inspect( linux.sysctl() ) );
 console.log( "sys.inspect of linux.sysctl().net is: ");
 console.log( sys.inspect( linux.sysctl().net ) );
 
-console.log( "sys.inspect of linux.sysctl().net.core is: " );
-console.log( sys.inspect( linux.sysctl().net.core ) );
+console.log( "linux.sysctl().net.ipv4.conf.all.forwarding is: ");
+console.log( linux.sysctl().net.ipv4.conf.all.forwarding );
