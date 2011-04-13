@@ -1,7 +1,8 @@
 {	"name"		: "linux-util",
-	"version"	: "0.0.1-rc1",
+	"version"	: "0.0.1-rc2",
 	"author"	: "Robert Keizer <robert@keizer.ca>",
-	"description"	: "Linux utilities",
+	"description"	: "Linux utilities - including sysctl()",
+	"keywords"	: [ "unix", "linux", "utility" ],
 	"licenses"	: [{
 		"type"	: "Public Domain"
 	}],
