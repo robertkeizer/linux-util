@@ -16,4 +16,6 @@ linux.acpi.battery( batName ) gives an object containing details
 of battery batName.
 
 linux.sysctl() gives an object with getter and setter functions
-to use. See test.js for details.
+to use. Run test.js for detailed examples. Example:
+
+	linux.sysctl().net.ipvfour.conf.all.forwarding
