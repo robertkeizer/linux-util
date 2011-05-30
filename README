@@ -1,21 +1,6 @@
 A set of utilities for linux.
 
-linux.mounts() gives an object containing details pertaining to 
-the current mounted filesystems.
+See tests/test.js for more features and details.
 
-linux.ps() gives an object with details on all processes on the
-system.
-
-linux.ps.pid( pidnum ) gives an object with details pertaining
-to pid pidnum.
-
-linux.acpi.batteries() gives an object containing details of all
-batteries.
-
-linux.acpi.battery( batName ) gives an object containing details
-of battery batName.
-
-linux.sysctl() gives an object with getter and setter functions
-to use. Run test.js for detailed examples. Example:
-
-	linux.sysctl().net.ipvfour.conf.all.forwarding
+linux.mountSync( [device], [path], [format] )		// Can mount file systems, or return an object about mounted file systems.
+linux.sysctl() 						// Returns an object with getters and settings ( ex: net.ipvfour.conf.all.forwarding )
