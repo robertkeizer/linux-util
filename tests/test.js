@@ -4,8 +4,11 @@ var	util	= require( 'util' );
 
 console.log( "Starting up tests.." );
 
-console.log( "linux.mounts() gives: " );
-console.log( sys.inspect( linux.mounts() ) );
+console.log( "linux.mountSync() gives: " );
+console.log( sys.inspect( linux.mountSync() ) );
+
+console.log( "linux.mountSync( '/dev/loop0', '/mnt/tmp', 'ext2' )" );
+console.log( sys.inspect( linux.mountSync( '/dev/loop0', '/mnt/tmp', 'ext2' ) ) );
 
 console.log( "linux.ps() gives: " );
 console.log( sys.inspect( linux.ps() ) );
