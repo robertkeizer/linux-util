@@ -2,5 +2,7 @@ A set of utilities for linux.
 
 See tests/test.js for more features and details.
 
-linux.mountSync( [device], [path], [format] )		// Can mount file systems, or return an object about mounted file systems.
-linux.sysctl() 						// Returns an object with getters and settings ( ex: net.ipvfour.conf.all.forwarding )
+linux.mountSync( [device], [path], [format] )
+	// Can mount file systems, or return an object about mounted file systems.
+linux.sysctl()
+	// Returns an object with getters and settings ( ex: net.ipvfour.conf.all.forwarding )
