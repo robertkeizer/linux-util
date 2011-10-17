@@ -1,4 +1,4 @@
-var	linux	= require( 'linux-util' );
+var	linux	= require( '../' );
 var	util	= require( 'util' );
 
 function out( msg ){
