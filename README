@@ -1,8 +1,18 @@
 A set of utilities for linux.
 
-See tests/test.js for more features and details.
+* Mounting.
 
-linux.mountSync( [device], [path], [format] )
-	// Can mount file systems, or return an object about mounted file systems.
-linux.sysctl()
-	// Returns an object with getters and settings ( ex: net.ipvfour.conf.all.forwarding )
+	linux.mount( "/device/to/mount", "/location", "filesystem" );
+	linux.umount( "/location" );
+
+* ps ( from /proc ).
+
+	linux.ps( );
+	linux.ps( process.pid );
+	linux.ps( 1 );
+
+* Sysctl. ( like cat /proc .. , echo /proc ..  )
+
+	linux.sysctl( );
+	linux.sysctl( "net.ipv4.conf.all.forwarding" );
+	linux.sysctl( "net.ipv4.conf.all.forwarding, 1 );
