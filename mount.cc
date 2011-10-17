@@ -6,6 +6,12 @@
 using namespace v8;
 using namespace node;
 
+/*
+* Just a note that these functions do not append and remove
+* lines from /etc/mtab. That is done in the javascript.
+* These are very very simple mount() and umount() calls.
+*/
+
 static Handle<Value> Mount ( const Arguments& args ){
 	HandleScope scope;
 
@@ -25,15 +31,29 @@ static Handle<Value> Mount ( const Arguments& args ){
 	if( mountReturn == -1 ){
 		return False();
 	}
-	std::ofstream etc_mtab( "/etc/mtab", std::ios::app );
-	etc_mtab << *device << " " << *path << " " << *format << " rw 0 0" << std::endl;
-	etc_mtab.close();
 
 	return True();
+}
+
+static Handle<Value> UMount ( const Arguments& args ){
+	HandleScope scope;
+	
+	if( args.Length() < 1 || !args[0]->IsString() ){
+		return False();
+	}
+
+	v8::String::Utf8Value path( args[0]->ToString() );
+	
+	int umount_return	= umount( *path );
+	if( umount_return == -1 ){
+		return False( );
+	}
+	return True( );
 }
 
 extern "C" void init (Handle<Object> target){
 	HandleScope scope;
 	
 	target->Set( String::New( "mount" ), FunctionTemplate::New( Mount )->GetFunction() );
+	target->Set( String::New( "umount" ), FunctionTemplate::New( UMount )->GetFunction() );
 }
