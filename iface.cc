@@ -86,6 +86,14 @@ static Handle<Value> GetInterfaceDetails( const Arguments& args ){
 		t_return->Set( v8::String::New( "ipv4_address" ), v8::String::New( inet_ntoa( sin.sin_addr ) ) );
 	}
 
+	if( ioctl( sck, SIOCGIFFLAGS, &ifr ) >= 0 ){
+		if( (ifr.ifr_flags)&IFF_UP ){
+			t_return->Set( v8::String::New( "up" ), True() );
+		}else{
+			t_return->Set( v8::String::New( "up" ), False() );
+		}
+	}
+
 	return t_return;
 } 
 	
