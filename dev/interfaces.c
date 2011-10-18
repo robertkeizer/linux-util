@@ -26,10 +26,19 @@ int main( ){
 	n_interfaces	= ifc.ifc_len / sizeof( struct ifreq );
 	for( i=0; i<n_interfaces; i++ ){
 		struct ifreq *item = &ifr[i];
-		printf( "%s:%s\n",
+
+		printf( "%s:%s",
 			item->ifr_name,								/* Interface name */
 			inet_ntoa( ( (struct sockaddr_in *)&item->ifr_addr)->sin_addr ) 	/* ipv4 address. */
 		);
+
+		if( ioctl( sck, SIOCGIFBRDADDR, item ) >= 0 ){
+			printf( ":%s",
+				inet_ntoa( ( (struct sockaddr_in *)&item->ifr_broadaddr)->sin_addr )	/* Broadcast ipv4 address. */
+			);
+		} 
+
+		printf( "\n" );
 	};
 
 	return 0;
