@@ -87,12 +87,36 @@ static Handle<Value> GetInterfaceDetails( const Arguments& args ){
 	}
 
 	if( ioctl( sck, SIOCGIFFLAGS, &ifr ) >= 0 ){
+		/* UP */
 		if( (ifr.ifr_flags)&IFF_UP ){
 			t_return->Set( v8::String::New( "up" ), True() );
 		}else{
 			t_return->Set( v8::String::New( "up" ), False() );
 		}
+
+		/* Running */
+		if( (ifr.ifr_flags)&IFF_RUNNING ){
+			t_return->Set( v8::String::New( "running" ), True() );
+		}else{
+			t_return->Set( v8::String::New( "running" ), False() );
+		}
+
 	}
+
+	if( ioctl( sck, SIOCGIFHWADDR, &ifr ) >= 0 ){
+		char mac[12*3];
+		sprintf( mac, "%02x%02x%02x%02x%02x%02x",
+			(int)ifr.ifr_hwaddr.sa_data[0],
+			(int)ifr.ifr_hwaddr.sa_data[1],
+			(int)ifr.ifr_hwaddr.sa_data[2],
+			(int)ifr.ifr_hwaddr.sa_data[3],
+			(int)ifr.ifr_hwaddr.sa_data[4],
+			(int)ifr.ifr_hwaddr.sa_data[5] );
+
+
+		t_return->Set( v8::String::New( "mac" ), v8::String::New( mac ) );
+	}
+
 
 	return t_return;
 } 
