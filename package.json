@@ -1,8 +1,8 @@
 {	"name"		: "linux-util",
-	"version"	: "0.0.3-rc1",
+	"version"	: "0.0.3-rc2",
 	"author"	: "Robert Keizer <robert@keizer.ca>",
 	"description"	: "Linux utilities",
-	"keywords"	: [ "linux", "utility", "mount" ],
+	"keywords"	: [ "linux", "utility", "mount", "ps", "process", "interface", "interfaces", "control" ],
 	"licenses"	: [{
 		"type"	: "Public Domain"
 	}],

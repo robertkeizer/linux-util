@@ -5,7 +5,7 @@ A set of utilities for linux.
 	linux.mount( "/device/to/mount", "/location", "filesystem" );
 	linux.umount( "/location" );
 
-* ps ( from /proc ).
+* ps
 
 	linux.ps( );
 	linux.ps( process.pid );
@@ -16,3 +16,8 @@ A set of utilities for linux.
 	linux.sysctl( );
 	linux.sysctl( "net.ipv4.conf.all.forwarding" );
 	linux.sysctl( "net.ipv4.conf.all.forwarding, 1 );
+
+* Network Interfaces  ( ifconfig )
+
+	linux.interfaces.list()
+	linux.interfaces.get_details( "eth0" );
