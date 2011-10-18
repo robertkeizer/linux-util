@@ -13,3 +13,8 @@ def build(bld):
     obj.target = "mount"
     obj.source = "mount.cc"
     obj.linkflags = ['']
+    
+    obj = bld.new_task_gen("cxx", "shlib", "node_addon")
+    obj.target = "iface"
+    obj.source = "iface.cc"
+    obj.linkfalgs = [ '' ]
