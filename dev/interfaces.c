@@ -38,6 +38,28 @@ int main( ){
 			);
 		} 
 
+		if( ioctl( sck, SIOCGIFFLAGS, item ) >= 0 ){
+			if( (ifr->ifr_flags)&IFF_UP ){						/* Interface state.. */
+				printf( ":UP" );
+			}else{
+				printf( ":DOWN" );
+			}
+		}
+
+		if( ioctl( sck, SIOCGIFHWADDR, item ) >= 0 ){
+			char	mac[12];
+			sprintf( mac, "%.2x:%.2x:%.2x:%.2x:%.2x:%.2x",
+					(unsigned char)item->ifr_hwaddr.sa_data[0],
+					(unsigned char)item->ifr_hwaddr.sa_data[1],
+					(unsigned char)item->ifr_hwaddr.sa_data[2],
+					(unsigned char)item->ifr_hwaddr.sa_data[3],
+					(unsigned char)item->ifr_hwaddr.sa_data[4],
+					(unsigned char)item->ifr_hwaddr.sa_data[5]
+				);
+
+			printf( ":%s", mac );
+		}
+
 		printf( "\n" );
 	};
 
