@@ -120,11 +120,65 @@ static Handle<Value> GetInterfaceDetails( const Arguments& args ){
 
 	return t_return;
 } 
+
+static Handle<Value> SetInterfaceDetails( const Arguments& args ){
+	HandleScope scope;
+
+	if( args.Length() < 2 ){
+		return False( );
+	}
+
+	v8::String::Utf8Value device_name( args[0]->ToString( ) );
+	v8::String::Utf8Value new_address( args[1]->ToString( ) );
+	v8::String::Utf8Value net_mask( args[2]->ToString( ) );
+
+	int t_socket;
+	struct ifreq ifr, if_netmask;
+	struct sockaddr_in sin, netmask_sin;
+
+	t_socket	= socket( AF_INET, SOCK_DGRAM, 0 );
+	if( t_socket < 0 ){
+		return False( );
+	}
+
+	// Copy the device name into the structure..
+	strncpy( ifr.ifr_name, *device_name, sizeof( ifr.ifr_name ) );
+
+	// Set the family of the structure..
+	sin.sin_family	= AF_INET;
 	
+	// Get the correct representation of the ip address
+	inet_aton( *new_address, &sin.sin_addr );
+
+	inet_aton( *net_mask, &netmask_sin.sin_addr );
+	
+	// Copy into the ifr structure
+	memcpy( &ifr.ifr_addr, &sin, sizeof( struct sockaddr ) );
+	
+	int t_result;
+	t_result	= ioctl( t_socket, SIOCSIFADDR, &ifr );
+	if( t_result < 0 ){
+		return False( );
+	}else{
+		// Set the interface name for the netmask structure..
+		strncpy( if_netmask.ifr_name, *device_name, sizeof( if_netmask.ifr_name ) );
+		// Set the netmask in the structure
+		memcpy( &if_netmask.ifr_netmask, &netmask_sin, sizeof( struct sockaddr ) );
+		// Try to set the netmask structure..
+		int t_netmask_result;
+		t_netmask_result	= ioctl( t_socket, SIOCSIFNETMASK, &if_netmask );
+		if( t_netmask_result < 0 ){
+			return False( );
+		}else{
+			return True( );
+		}
+	}
+}
 
 extern "C" void init (Handle<Object> target){
 	HandleScope scope;
 	
 	target->Set( String::New( "list" ), FunctionTemplate::New( ListInterfaces )->GetFunction( ) );
 	target->Set( String::New( "get_details" ), FunctionTemplate::New( GetInterfaceDetails )->GetFunction( ) );
+	target->Set( String::New( "set_details" ), FunctionTemplate::New( SetInterfaceDetails )->GetFunction( ) );
 }
