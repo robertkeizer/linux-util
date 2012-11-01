@@ -1,5 +1,5 @@
 {	"name"		: "linux-util",
-	"version"	: "0.0.3-rc2",
+	"version"	: "0.0.4-rc1",
 	"author"	: "Robert Keizer <robert@keizer.ca>",
 	"description"	: "Linux utilities",
 	"keywords"	: [ "linux", "utility", "ps", "process", "control" ],
