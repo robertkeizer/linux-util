@@ -2,7 +2,7 @@
 	"version"	: "0.0.3-rc2",
 	"author"	: "Robert Keizer <robert@keizer.ca>",
 	"description"	: "Linux utilities",
-	"keywords"	: [ "linux", "utility", "mount", "ps", "process", "interface", "interfaces", "control" ],
+	"keywords"	: [ "linux", "utility", "ps", "process", "control" ],
 	"licenses"	: [{
 		"type"	: "Public Domain"
 	}],

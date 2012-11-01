@@ -1,23 +1,9 @@
 A set of utilities for linux.
 
-* Mounting.
-
-	linux.mount( "/device/to/mount", "/location", "filesystem" );
-	linux.umount( "/location" );
+Working away at updating stuff..
 
 * ps
 
 	linux.ps( );
 	linux.ps( process.pid );
 	linux.ps( 1 );
-
-* Sysctl. ( like cat /proc .. , echo /proc ..  )
-
-	linux.sysctl( );
-	linux.sysctl( "net.ipv4.conf.all.forwarding" );
-	linux.sysctl( "net.ipv4.conf.all.forwarding, 1 );
-
-* Network Interfaces  ( ifconfig )
-
-	linux.interfaces.list()
-	linux.interfaces.get_details( "eth0" );
