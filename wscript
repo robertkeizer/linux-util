@@ -12,3 +12,7 @@ def build(bld):
 	obj		= bld.new_task_gen( "cxx", "shlib", "node_addon" )
 	obj.target	= "mount"
 	obj.source	= "src/mount.cc"
+	
+	obj		= bld.new_task_gen( "cxx", "shlib", "node_addon" )
+	obj.target	= "ifconfig"
+	obj.source	= "src/ifconfig.cc"
