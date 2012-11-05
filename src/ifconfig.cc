@@ -10,7 +10,7 @@
 using namespace v8;
 using namespace node;
 
-static Handle<Value> _set_ipv4_address ( const Arguments* args ){
+static Handle<Value> _set_ipv4_address ( const Arguments& args ){
 	HandleScope scope;
 	
 	v8::String::Utf8Value device( args[0]->ToString( ) );
@@ -26,13 +26,13 @@ static Handle<Value> _set_ipv4_address ( const Arguments* args ){
 		return False( );
 	}
 	
-	strncpy( ifr.ifr_name, *device_name, sizeof( ifr.ifr_name ) );
+	strncpy( ifr.ifr_name, *device, sizeof( ifr.ifr_name ) );
 	sin.sin_family	= AF_INET;
 	
-	inet_aton( *new_address, &sin.sin_addr );
-	inet_aton( *net_mask, &netmask_sin.sin_addr );
+	inet_aton( *address, &sin.sin_addr );
+	inet_aton( *mask, &netmask_sin.sin_addr );
 	
-	memcpy( &ifr.ifr_addr, &sin, sizeof( struct socketaddr ) );
+	memcpy( &ifr.ifr_addr, &sin, sizeof( struct sockaddr ) );
 
 	int t_result;
 	t_result	= ioctl( t_socket, SIOCSIFADDR, &ifr );
@@ -40,7 +40,7 @@ static Handle<Value> _set_ipv4_address ( const Arguments* args ){
 		return False( );
 	}
 	
-	strncpy( if_netmask.ifr_name, *device_name, sizeof( if_netmask.ifr_name ) );
+	strncpy( if_netmask.ifr_name, *device, sizeof( if_netmask.ifr_name ) );
 	memcpy( &if_netmask.ifr_netmask, &netmask_sin, sizeof( struct sockaddr ) );
 	
 	int t_netmask_result;
